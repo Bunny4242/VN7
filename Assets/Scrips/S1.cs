@@ -7,19 +7,41 @@ public class S1 : MonoBehaviour
 {
     public TextAsset textFile;
     string[] line = new string[10];
-    Text textDisplay;
+    string[] names = {" ","MIRUN"};
+    public Text textDisplay;
+    int currentLine = 0;
+
 
 
     void Start()
     {
         string allText = textFile.text;
         line = allText.Split("\n");
-        textDisplay = GameObject.Find("Text").GetComponent<Text>();
+        //textDisplay = GameObject.Find("Text").GetComponent<Text>();
+        //textDisplay.text = line[currentLine];
+        displayText();
     }
 
     // Update is called once per frame
     void Update()
     {
-        textDisplay.text = line[0];
+        if (Input.GetMouseButtonDown(0))
+        {
+            currentLine++;
+            //textDisplay.text = line[currentLine];
+            displayText();
+            
+        }
+        
+    }
+    void displayText()
+    {
+        string[] tmp = new string[2];
+        tmp = line[currentLine].Split("//");
+        int cNumber = int.Parse(tmp[0]);
+        string txt = "";
+        if (cNumber > 0) txt = names[cNumber] + ": " + tmp[1];
+        else txt = tmp[1];
+        textDisplay.text = txt;
     }
 }
