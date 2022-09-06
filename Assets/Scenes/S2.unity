@@ -285,8 +285,9 @@ GameObject:
   - component: {fileID: 589654002}
   - component: {fileID: 589654004}
   - component: {fileID: 589654003}
+  - component: {fileID: 589654005}
   m_Layer: 5
-  m_Name: 'Text '
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -325,7 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -335,11 +336,11 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 8828813a61492ba42ba98d27442d65cd, type: 3}
     m_FontSize: 63
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 195
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -354,6 +355,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 589654001}
   m_CullTransparentMesh: 1
+--- !u!114 &589654005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589654001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8bdb4c0eacddd4faab154fedea292f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LaunchOnStart: 1
+  timeOut: 2
+  MultiStrings:
+  - 
+  pointer: 2
+  ORIGINAL_TEXT: 
 --- !u!1 &714535297
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +431,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6861cea61ca8eb144a1811945bd7d074, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ff0fe580aab6d49479f1e48c474db62b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -661,7 +680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -715,8 +734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648d0a00837975447a353080a40b398b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textFile: {fileID: 4900000, guid: e9aa52098440aec408a055970b92aa17, type: 3}
-  textDisplay: {fileID: 589654003}
+  textFile: {fileID: 4900000, guid: 685efbfa8bd0ecc48963fe0a6f9d111c, type: 3}
 --- !u!4 &2005641180
 Transform:
   m_ObjectHideFlags: 0

@@ -2,24 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class S1 : MonoBehaviour
 {
     public TextAsset textFile;
     string[] line = new string[10];
     string[] names = {" ","MIRUN"};
-    public Text textDisplay;
+    Text textDisplay;
     int currentLine = 0;
+    TW_MultiStrings_Regular tw;
 
 
 
-    void Start()
+    void Awake()
     {
         string allText = textFile.text;
-        line = allText.Split("\n");
-        //textDisplay = GameObject.Find("Text").GetComponent<Text>();
+        textDisplay = GameObject.Find("Text").GetComponent<Text>();
         //textDisplay.text = line[currentLine];
-        displayText();
+        tw = GameObject.Find("Text").GetComponent<TW_MultiStrings_Regular>();
+        tw.MultiStrings = allText.Split("\n");
+        textDisplay.text = tw.MultiStrings[0];
     }
 
     // Update is called once per frame
@@ -28,8 +32,15 @@ public class S1 : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             currentLine++;
-            //textDisplay.text = line[currentLine];
-            displayText();
+            if (currentLine >= 12)
+            {
+                if (SceneManager.GetActiveScene().name.CompareTo("S1") == 0)
+                {
+                    SceneManager.LoadScene("S2");
+                }
+                
+            }
+            else tw.NextString();
             
         }
         
@@ -40,7 +51,7 @@ public class S1 : MonoBehaviour
         tmp = line[currentLine].Split("//");
         int cNumber = int.Parse(tmp[0]);
         string txt = "";
-        if (cNumber > 0) txt = names[cNumber] + ": " + tmp[1];
+        if (cNumber > 0) txt = names[cNumber] + " : " + tmp[1];
         else txt = tmp[1];
         textDisplay.text = txt;
     }
