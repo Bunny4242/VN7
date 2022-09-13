@@ -9,8 +9,8 @@ public class S1 : MonoBehaviour
 {
     public TextAsset textFile;
     string[] line = new string[10];
-    string[] names = {" ","MIRUN"};
-    Text textDisplay;
+    string[] names = { "MIRUN", "ROSE" };
+    Text textDisplay , textName;
     int currentLine = 0;
     TW_MultiStrings_Regular tw;
     FadeCanvas fadeCanvas;
@@ -20,12 +20,13 @@ public class S1 : MonoBehaviour
     void Awake()
     {
         string allText = textFile.text;
-        //line = allText.Split("\n");
+        line = allText.Split("\n");
         textDisplay = GameObject.Find("Text").GetComponent<Text>();
+        textName = GameObject.Find("TextName").GetComponent<Text>();
         tw = GameObject.Find("Text").GetComponent<TW_MultiStrings_Regular>();
         fadeCanvas = GameObject.Find("Canvas").GetComponent<FadeCanvas>();
         tw.MultiStrings = allText.Split("\n");
-        textDisplay.text = tw.MultiStrings[0];
+        displayName();
     }
 
     void Start()
@@ -38,25 +39,29 @@ public class S1 : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             currentLine++;
-            if (currentLine >= 12)
+            if (currentLine >= 10)
             {
                 if (SceneManager.GetActiveScene().name.CompareTo("S1") == 0)
                 {
                     fadeCanvas.HideUI();
                 }
             }
-            else tw.NextString();
+            else
+            {
+                displayName();
+                tw.NextString();
+            }
         }
     }
 
-    void displayText()
+    void displayName()
     {
         string[] tmp = new string[2];
-        tmp = line[currentLine].Split("//");
+        tmp = tw.MultiStrings[currentLine].Split(":");
+        tw.MultiStrings[currentLine] = tmp[1];
         int cNumber = int.Parse(tmp[0]);
-        string txt = " ";
-        if (cNumber > 0) txt = names[cNumber] + "//" + tmp[1];
-        else txt = tmp[1];
-        textDisplay.text = txt;
+        textName.text = names[cNumber];
+        if (currentLine == 0) textDisplay.text = tmp[1];
+        
     }
 }
